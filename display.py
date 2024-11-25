@@ -9,6 +9,7 @@ def display_progress(attempts_remaining, guesses_list, correct, word):
             print("Attempt", n+1, guesses_list[n])
         print("THE CORRECT WORD:", word)
     elif correct == False:
+        print("YOU HAVE", attempts_remaining, "ATTEMPTS REMAINING")
         for n in range(len(guesses_list)):
             print("Attempt", n+1, guesses_list[n])
     else:
@@ -20,16 +21,20 @@ def display_progress(attempts_remaining, guesses_list, correct, word):
 def add_color(guess, word):
     word_dict = make_dict(word)
     init()
-    new_word = ''
+    new_word = [''] * len(word)
 
     for x in range(len(word)):
         if word[x] == guess[x]:
-            temp_char = Fore.GREEN + word[x] + Style.RESET_ALL
+            new_word[x] = Fore.GREEN + word[x] + Style.RESET_ALL
             word_dict[word[x]] -= 1
-        elif guess[x] in word and word_dict[guess[x]] > 0:
-            temp_char = Fore.YELLOW + guess[x] + Style.RESET_ALL
-            word_dict[guess[x]] -= 1
-        else:
-            temp_char = Fore.RED + guess[x] + Style.RESET_ALL
-        new_word += temp_char
-    return new_word
+
+    for x in range(len(word)):
+        if not new_word[x]:
+            if guess[x] in word and guess[x] in word_dict:
+                if word_dict[guess[x]] > 0:
+                    new_word[x] = Fore.YELLOW + guess[x] + Style.RESET_ALL
+                    word_dict[guess[x]] -= 1
+            else:
+                new_word[x] = Fore.RED + guess[x] + Style.RESET_ALL
+
+    return "".join(new_word)
