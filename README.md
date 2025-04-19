@@ -27,8 +27,9 @@ Random word selection from a predefined word list.
 - Inspired by the original Wordle game created by Josh Wardle.
 - Thanks to the open-source Python community for providing helpful libraries and resources.
 
-  # 💫 About Me:
-Former AI Research Intern | Honors CS | Dell Scholar | CDEP Scholar at FVSU | NSBE
+ 
+# 💫 About Me:
+SDE intern @ Amazon | AI Research @ PNNL & UAH | Dell Scholar | CDEP & Honors CS @ FVSU
 
 
 # 💻 Tech Stack:
